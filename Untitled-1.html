@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouton téléporteur</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #ytb {
+            position: absolute;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 2px solid #007BFF;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <button id="ytb">Clique-moi</button>
+
+    <script>
+        const button = document.getElementById('ytb');
+        const threshold = 100; // Distance en pixels avant que le bouton se téléporte
+
+        function getRandomPosition() {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            const x = Math.random() * (viewportWidth - button.offsetWidth);
+            const y = Math.random() * (viewportHeight - button.offsetHeight);
+
+            return { x, y };
+        }
+
+        function teleportButton() {
+            const { x, y } = getRandomPosition();
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        document.addEventListener('mousemove', (event) => {
+            const rect = button.getBoundingClientRect();
+
+            const distanceX = Math.abs(event.clientX - (rect.left + rect.width / 2));
+            const distanceY = Math.abs(event.clientY - (rect.top + rect.height / 2));
+
+            const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
+
+            if (distance < threshold) {
+                teleportButton();
+            }
+        });
+
+        // Position initiale du bouton
+        teleportButton();
+    </script>
+</body>
+</html>

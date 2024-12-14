@@ -1,0 +1,32 @@
+#ytb {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: hsl(0, 100%, 50%);
+    border-color: hsl(0, 100%, 50%);
+    color: #ffffff;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    
+}
+#titre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+body{
+    background-color: hsl(210, 3%, 14%);
+}
+#pp {
+    border-radius: 75px;
+    display: block;
+    margin: auto
+}
+#sous-titre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
